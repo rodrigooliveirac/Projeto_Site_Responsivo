@@ -1,0 +1,671 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+:root{
+    /*------ Colors ------*/
+    --title-color: #000;
+    --base-color: #69B99D;
+    --second-color: #CCF4E6;
+    --background-color: #F9F9F9;
+
+    /*------ Fonts ------*/
+    --title-font: 'Poppins', sans-serif;
+    --body-font: 'DM Sans', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    color: #767676;
+    background-color: var(--background-color);
+    font: 400 1rem var(--body-font);
+}
+
+.title{
+    color: var(--title-color);
+    font: 700 1.875rem var(--title-font); 
+}
+
+.button{
+    width: 214px;
+    height: 3.5rem;
+    display: inline-flex;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--base-color);
+    border-radius: 0.25rem;
+    transition: 0.3s;
+}
+
+.button:hover{
+    background-color: #3a8f71;
+}
+
+.divider-1{
+    height: 1px;
+    background: linear-gradient(
+        270deg,
+        #69B99D 0%, 
+        rgba(204, 244, 230, 0.34) 100%);
+}
+
+.divider-2{
+    height: 1px;
+    background: linear-gradient(
+        270deg,
+        rgba(204, 244, 230, 0.34) 0%,
+        #69B99D 100%);
+}
+
+/*------- Layout -------*/
+
+#header{
+    width: 100%;
+    position: fixed;
+    background-color: var(--background-color);
+    border-bottom: 1px solid #e4e4e4;
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 4.5rem;
+}
+
+nav a span{
+    color: var(--base-color);
+}
+
+nav ul li{
+    text-align: center;
+}
+
+nav ul li a{
+    position: relative;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover,
+nav ul li a.active{
+    color: var(--base-color);
+    font-weight: bold;
+}
+
+nav ul li a::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--base-color);
+
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem;
+    transition: width 0.2s;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after{
+    width: 100%;
+}
+
+
+
+nav .menu{
+    opacity: 0;
+    visibility: hidden;
+}
+
+nav.show .menu{
+    opacity: 1;
+    visibility: visible;
+
+    background-color: var(--background-color);
+    
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+
+    position: fixed;
+}
+
+nav.show .menu{
+    display: grid;
+    place-content: center;
+}
+
+nav.show ul.grid{
+    gap: 4rem;  
+}
+
+.logo{
+    color: var(--title-color);
+    font: 700 1.31rem var(--title-font);
+}
+
+.logo span{
+    color: var(--base-color);
+}
+
+.logo-alt span{
+    color: var(--background-color);
+}
+
+main{
+    margin-top: 4.5rem;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.container{
+    width: 90%;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.grid{
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section{
+    padding: calc(5rem + 4.5rem) 0;
+
+}
+
+.section .subtitle{
+    font-size: 1rem;
+}
+
+/* toggle menu*/
+
+.toggle{
+    color: var(--base-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+nav .icon-menu{
+    position: absolute;
+    opacity: 1;
+    right: 3.2rem;
+}
+
+nav .icon-close{
+    visibility: hidden;
+    position: absolute;
+    opacity: 0;
+}
+
+nav.show .icon-menu{
+    visibility: hidden;
+    opacity: 0;
+}
+
+nav.show .icon-close{
+    visibility: visible;
+    position: absolute;
+    opacity: 1;
+    right: 3.2rem;
+
+    transition: 0.2s;
+}
+
+/*------- Home -------*/
+
+#home{
+    overflow: hidden;
+}
+
+#home .container{
+    margin: 0;
+}
+
+#home .image{
+    position: relative;
+}
+
+#home .image::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: var(--second-color);
+    position: absolute;
+    top: -16.8%;
+    left: 16.7%;
+    z-index: 0;
+}
+
+#home .image img{
+    position: relative;
+    right: 1rem;
+}
+
+#home .text{
+    text-align: center;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+#home .text h2{
+    margin-bottom: 1rem;
+}
+
+#home .text p{
+    margin-bottom: 2rem;
+}
+
+/*------- About -------*/
+
+#about{
+    overflow: hidden;
+}
+
+#about .container{
+    margin: 0;
+}
+
+#about .image{
+    position: relative;
+}
+
+#about .image::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: var(--second-color);
+    position: absolute;
+    top: -10%;
+    left: -35%;
+    z-index: 0;
+}
+
+#about .image img{
+    position: relative;
+}
+
+#about .text{
+    text-align: left;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+#about .text h2{
+    margin-bottom: 1rem;
+}
+
+#about .text p{
+    margin-bottom: 2rem;
+}
+
+/*------- SERVICES -------*/
+h3{
+    font-size: 1.5rem;
+    color: var(--title-color);
+}
+
+.section header{
+    margin-bottom: 4rem;
+}
+
+.section header span{
+    color: var(--base-color);
+}
+
+.card .grid{
+    gap: 1.5rem
+}
+
+.card{
+    padding: 3.625rem 2rem;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+    border-bottom: 0.25rem solid var(--base-color);
+    border-radius: .25rem .25rem 0 0;
+    text-align: center;
+}
+
+.card i{
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    color: var(--base-color);
+}
+
+.card title{
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/*------- TESTIMONIALS -------*/
+
+#testimonials{
+    background-color: var(--background-color);
+    color: var(--title-color);
+}
+
+#testimonials blockquote{
+    padding: 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    border-radius: 0.25rem;
+}
+
+#testimonials blockquote p{
+    position: relative;
+    text-indent: 1.875rem;
+    margin-bottom: 1.5rem;
+}
+
+#testimonials blockquote p span{
+    font: 700 3rem serif;
+
+    position: absolute;
+    top: -0.6rem;
+    left: -1.875rem;
+    color: var(--base-color);
+}
+
+#testimonials cite{
+    display: flex;
+    align-items: center;
+    color: var(--title-color);
+    font-style: normal;
+}
+
+#testimonials cite img{
+    width: 2rem; 
+    height: 2rem;
+    object-fit: cover; 
+    clip-path: circle();  
+    margin-right: 0.5rem;
+}
+
+/*------- SWIPER -------*/
+.swiper-slide{
+    height: auto;
+    padding: 4rem 1rem;
+}
+
+.swiper-pagination-bullet{
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.swiper-pagination-bullet-active{
+    background: var(--base-color);
+}
+
+/*------- CONTACT -------*/
+#contact .grid{
+    gap: 4rem;
+}
+
+#contact .text p{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+#contact .links{
+    margin: 3.75rem 0 5rem 0;
+}
+
+#contact .button i{
+    font-size: 1.5rem;
+    margin-right: 0.625rem;
+}
+
+#contact ul.grid{
+    gap: 2rem;
+}
+
+#contact ul li{
+    display: flex;
+    align-items: center;
+}
+
+#contact ul li i{
+    color: var(--base-color);
+    margin-right: 0.625rem;
+}
+
+/*------- FOOTER -------*/
+footer{
+    background-color: var(--base-color);
+}
+
+footer.section{
+    padding: 4rem 0;
+}
+
+footer .logo{
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+footer .brand{
+    color: var(--background-color);
+    margin-bottom: 0.75rem;
+}
+
+footer i{
+    font-size: 1.5rem;
+    color: var(--background-color);
+}
+
+footer .social a{
+    display: inline-block;
+    transition: 0.3s;
+    margin-right: 2rem;
+}
+
+footer .social a:hover{
+    transform: translateY(-8px);
+}
+
+/*----- Back to top -----*/
+
+.back-to-top{
+    background: var(--base-color);
+    color: var(--background-color);
+
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+
+    padding: 1rem;
+    clip-path: circle();
+
+    font-size: 1.5rem;
+    line-height: 0;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition: 0.3s;
+    transform: translateY(100%);
+
+}
+
+.back-to-top.show{
+    visibility: visible;
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+/*========= MEDIA QUERIES =========*/
+
+/* Extra large devices: 1200 > */
+@media only screen and (min-width: 1200px){
+    /*----- reusable classes -----*/
+    .container{
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section{
+        padding: 10rem 0;
+    }
+
+    .section header{
+        max-width: 32rem;
+        text-align: center;
+        margin: auto;
+        margin-right: auto;
+    }
+
+    .button{
+        height: 3.125rem;
+    }
+
+    nav .menu{
+        opacity: 1;
+        visibility: visible;
+        top: 0;
+    }
+
+    nav .menu ul{
+        display: flex;
+        gap: 2rem;
+    }
+
+    nav .menu ul li a.title{
+        font: 400 1rem var(--body-font);
+    }
+
+    nav .menu ul li a.title.active{
+        font-weight: bold;
+        -webkit-font-smoothing: auto;
+    }
+
+    nav .icon-menu{
+        display: none;
+    }
+
+    main{
+        margin-top: calc(4.5rem + 2rem);
+    }   
+
+    /*---------- home ----------*/
+
+    #home .container{
+        grid-auto-flow: column;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+    
+    #home .image{
+        order: 1;
+    }
+
+    #home .text{
+        order: 0;
+        max-width: 24rem;
+        text-align: left;
+    }
+    
+    /*---------- ABOUT ----------*/
+
+    #about .container{
+        margin: 0 auto;
+        grid-auto-flow: column;
+    }
+
+    /*---------- services ----------*/
+
+    .cards {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .card{
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    /*---------- testimonials ----------*/
+
+    #testimonials .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /*----- contact -----*/
+
+    #contact .container{
+        grid-auto-flow: column;
+        align-items: center;
+    }
+
+    #contact .text{
+        max-width: 25rem;
+    }
+
+    /*----- footer -----*/
+
+    footer .section{
+        padding: 3.75rem 0;
+    }
+
+    footer .container{
+        grid-auto-flow: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+/* Large devices: 1023 > */
+@media only screen and (min-width: 1023px){    
+}
+/* Large devices: 767 > */
+@media only screen and (min-width: 767px){ 
+
+    .title{
+        font-size: 2.25rem;
+    }
+    
+    .subtitle{
+        font-size: 1.125rem;
+    }
+
+    /*----- NAV -----*/
+    nav .menu{
+        opacity: 1;
+        visibility: visible;
+        margin-top: 1.3rem;
+        top: 0;  
+    }
+
+    nav .menu ul{
+        display: flex;
+        gap: 2rem;
+    }
+
+    nav .menu ul li a.title{
+        font: 400 1rem var(--body-font);
+    }
+
+    nav .icon-menu{
+        display: none;
+    }
+}
